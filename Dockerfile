@@ -10,8 +10,9 @@ RUN \
   apt-get -y upgrade && \
   apt-get -y install --no-install-recommends \
     lua5.1 liblua5.1-0-dev libjson-c-dev ca-certificates \
-    git cmake make pkg-config gcc g++ openssh-client \ 
+    git cmake make pkg-config gcc g++ openssh-client \
     python-prctl python-dev python-setuptools python-jsonschema \
+    python-pip \
     && \
   apt-get clean
 
