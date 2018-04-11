@@ -1,4 +1,4 @@
-FROM ubuntu:yakkety
+FROM ubuntu:xenial
 
 ENV HOME=/root
 
@@ -15,6 +15,11 @@ RUN \
     python-pip python-pbkdf2 \
     && \
   apt-get clean
+
+# Use updated version of some core python packages
+RUN \
+  pip install --upgrade pip && \
+  pip install --upgrade setuptools
 
 # Compile libubox
 RUN \
