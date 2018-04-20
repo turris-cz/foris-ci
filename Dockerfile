@@ -18,7 +18,7 @@ RUN \
 
 # Use updated version of some core python packages
 RUN \
-  pip install --upgrade pip && \
+  easy_install -U pip && \
   pip install --upgrade setuptools
 
 # Compile libubox
@@ -52,7 +52,11 @@ RUN \
   cd ~/build/ubus && \
   git checkout python_bindings && \
   cmake CMakeLists.txt -DBUILD_PYTHON='ON' && \
-  make install
+  make && \
+  cmake CMakeLists.txt -DBUILD_PYTHON='OFF' && \
+  make install && \
+  cd python && \
+  pip install --upgrade .
 
 # Add Gitlab's SSH key
 RUN \
