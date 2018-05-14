@@ -12,9 +12,15 @@ RUN \
     lua5.1 liblua5.1-0-dev libjson-c-dev ca-certificates \
     git cmake make pkg-config gcc g++ openssh-client \
     python-prctl python-dev python-setuptools python-jsonschema \
-    python-pip python-pbkdf2 \
+    python-pip python-pbkdf2 locales \
     && \
   apt-get clean
+
+# Generate locales
+RUN \
+  echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+  locale-gen && \
+  echo 'export LC_ALL=en_US.utf8' >> /etc/bash.bashrc
 
 # Use updated version of some core python packages
 RUN \
