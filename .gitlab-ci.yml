@@ -6,5 +6,7 @@ build_image:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.labs.nic.cz
     - docker build -t registry.labs.nic.cz/turris/foris-ci .
     - docker push registry.labs.nic.cz/turris/foris-ci:latest
+  tags:
+    - dind
   only:
     - master
