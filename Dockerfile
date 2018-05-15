@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 
 ENV HOME=/root
+ENV LC_ALL=en_US.utf8
 
 # Install base packages
 RUN \
@@ -19,8 +20,7 @@ RUN \
 # Generate locales
 RUN \
   echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-  locale-gen && \
-  echo 'export LC_ALL=en_US.utf8' >> /etc/bash.bashrc
+  locale-gen
 
 # Use updated version of some core python packages
 RUN \
