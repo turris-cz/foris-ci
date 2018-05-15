@@ -1,0 +1,10 @@
+build_image:
+  image: docker:git
+  services:
+  - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.labs.nic.cz
+    - docker build -t registry.labs.nic.cz/turris/foris-ci .
+    - docker push registry.labs.nic.cz/turris/foris-ci:latest
+  only:
+    - master
