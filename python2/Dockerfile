@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 ENV HOME=/root
 ENV LC_ALL=en_US.utf8
@@ -22,11 +22,6 @@ RUN \
   echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
   locale-gen
 
-# Use updated version of some core python packages
-RUN \
-  easy_install -U pip && \
-  pip install --upgrade setuptools
-
 # Compile libubox
 RUN \
   mkdir -p ~/build && \
@@ -35,7 +30,7 @@ RUN \
   git clone git://git.openwrt.org/project/libubox.git && \
   cd ~/build/libubox && \
   git checkout master && \
-  cmake CMakeLists.txt && \
+  cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
   make install
 
 # Compile uci
@@ -46,7 +41,7 @@ RUN \
   git clone git://git.openwrt.org/project/uci.git && \
   cd ~/build/uci && \
   git checkout master && \
-  cmake cmake CMakeLists.txt && \
+  cmake cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
   make install
 
 # Compile ubus
@@ -56,13 +51,18 @@ RUN \
   rm -rf ubus && \
   git clone https://gitlab.labs.nic.cz/turris/ubus.git && \
   cd ~/build/ubus && \
-  git checkout python_bindings && \
-  cmake CMakeLists.txt -DBUILD_PYTHON='ON' && \
-  make && \
-  cmake CMakeLists.txt -DBUILD_PYTHON='OFF' && \
-  make install && \
-  cd python && \
-  pip install --upgrade .
+  git checkout master && \
+  cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
+  make install
+
+# Install ubus python bindings
+RUN \
+  mkdir -p ~/build && \
+  cd ~/build && \
+  rm -rf python-ubus && \
+  git clone https://gitlab.labs.nic.cz/turris/python-ubus.git && \
+  cd ~/build/python-ubus && \
+  pip install .
 
 # Add Gitlab's SSH key
 RUN \

@@ -1,11 +1,37 @@
-build_image:
+variables:
+  LC_ALL: C
+
+
+stages:
+  - python2
+  - python3
+
+build_image_python2:
   image: docker:git
+  stage: python2
   services:
   - docker:dind
   script:
+    - cd python2/
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.labs.nic.cz
-    - docker build -t registry.labs.nic.cz/turris/foris-ci .
-    - docker push registry.labs.nic.cz/turris/foris-ci:latest
+    - docker build -t registry.labs.nic.cz/turris/foris-ci/python2 .
+    - docker push registry.labs.nic.cz/turris/foris-ci/python2
+  tags:
+    - dind
+  only:
+    - master
+
+
+build_image_python3:
+  image: docker:git
+  stage: python3
+  services:
+  - docker:dind
+  script:
+    - cd python3/
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.labs.nic.cz
+    - docker build -t registry.labs.nic.cz/turris/foris-ci/python3 .
+    - docker push registry.labs.nic.cz/turris/foris-ci/python3
   tags:
     - dind
   only:
