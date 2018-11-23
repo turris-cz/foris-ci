@@ -13,7 +13,7 @@ RUN \
     lua5.1 liblua5.1-0-dev libjson-c-dev ca-certificates \
     git cmake make pkg-config gcc g++ openssh-client \
     python-prctl python-dev python-setuptools python-jsonschema \
-    python-pip python-pbkdf2 locales gpg gpg-agent \
+    python-pip python-pbkdf2 locales gpg gpg-agent libcap-dev \
     && \
   apt-get clean
 
