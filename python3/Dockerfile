@@ -14,6 +14,7 @@ RUN \
     git cmake make pkg-config gcc g++ openssh-client \
     python3-prctl python3-dev python3-setuptools python3-jsonschema \
     python3-pip python3-pbkdf2 locales gpg gpg-agent libcap-dev \
+    mosquitto \
     && \
   apt-get clean
 
