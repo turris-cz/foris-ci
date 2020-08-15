@@ -1,7 +1,9 @@
-FROM ubuntu:bionic
+FROM debian:stable
 
 ENV HOME=/root
+ENV TZ=Europe/Prague
 ENV LC_ALL=en_US.utf8
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install base packages
 RUN \
@@ -17,6 +19,12 @@ RUN \
     mosquitto \
     && \
   apt-get clean
+
+# Set Timezone
+RUN \
+  rm -f /etc/localtime && \
+  echo "$TZ" > /etc/timezone && \
+  dpkg-reconfigure -f noninteractive tzdata
 
 # Update python paths
 RUN \
