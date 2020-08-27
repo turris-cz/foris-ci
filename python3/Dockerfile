@@ -13,7 +13,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get -y install --no-install-recommends \
     lua5.1 liblua5.1-0-dev libjson-c-dev ca-certificates \
-    git cmake make pkg-config gcc g++ openssh-client \
+    git cmake make pkg-config gcc g++ openssh-client bzip2 \
     python3-prctl python3-dev python3-setuptools python3-jsonschema \
     python3-pip python3-pbkdf2 locales gpg gpg-agent libcap-dev \
     mosquitto \
