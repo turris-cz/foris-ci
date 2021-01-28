@@ -6,8 +6,10 @@ ENV LC_ALL=en_US.utf8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install base packages
+# TODO once bullseye becomes stable remove the backports
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
+  echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/backports.list && \
   echo "# Installing base packages" && \
   apt-get update && \
   apt-get -y upgrade && \
@@ -16,7 +18,7 @@ RUN \
     git cmake make pkg-config gcc g++ openssh-client bzip2 \
     python3-prctl python3-dev python3-setuptools python3-jsonschema \
     python3-pip python3-pbkdf2 locales gpg gpg-agent libcap-dev \
-    mosquitto \
+    mosquitto wireguard-tools \
     && \
   apt-get clean
 
