@@ -86,7 +86,6 @@ RUN \
   git clone git://git.openwrt.org/project/iwinfo.git && \
   cd iwinfo && \
   ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so liblua.so && \
-  sed -i 's/..CC....IWINFO_LDFLAGS/\$(LD) \$(IWINFO_LDFLAGS/' Makefile && \
   CFLAGS="-I/usr/include/lua5.1/" LD=ld FPIC="-fPIC" LDFLAGS="-lc" make && \
   cp -r include/* /usr/local/include/ && \
   cp libiwinfo.so /usr/local/lib/
