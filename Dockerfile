@@ -63,7 +63,7 @@ RUN \
   mkdir -p ~/build && \
   cd ~/build && \
   rm -rf ubus && \
-  git clone https://gitlab.labs.nic.cz/turris/ubus.git && \
+  git clone https://gitlab.nic.cz/turris/ubus.git && \
   cd ~/build/ubus && \
   git checkout master && \
   cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
@@ -74,7 +74,7 @@ RUN \
   mkdir -p ~/build && \
   cd ~/build && \
   rm -rf python-ubus && \
-  git clone https://gitlab.labs.nic.cz/turris/python-ubus.git && \
+  git clone https://gitlab.nic.cz/turris/python-ubus.git && \
   cd ~/build/python-ubus && \
   pip install .
 
@@ -104,6 +104,6 @@ RUN \
 # Add Gitlab's SSH key
 RUN \
   mkdir /root/.ssh && \
-  ssh-keyscan gitlab.labs.nic.cz > /root/.ssh/known_hosts
+  ssh-keyscan gitlab.nic.cz > /root/.ssh/known_hosts
 
 CMD [ "bash" ]

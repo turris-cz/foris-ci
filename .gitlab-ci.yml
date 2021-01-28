@@ -3,7 +3,7 @@ variables:
 
 before_script:
  - docker info
- - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.labs.nic.cz
+ - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.nic.cz
 
 stages:
   - python3
@@ -14,8 +14,8 @@ build_image_python3:
   services:
     - docker:dind
   script:
-    - docker build -t registry.labs.nic.cz/turris/foris-ci/python3 .
-    - docker push registry.labs.nic.cz/turris/foris-ci/python3
+    - docker build -t registry.nic.cz/turris/foris-ci/python3 .
+    - docker push registry.nic.cz/turris/foris-ci/python3
   tags:
     - dind
   only:

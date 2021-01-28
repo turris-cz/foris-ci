@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker login registry.labs.nic.cz
+docker login registry.nic.cz
 
-docker build -t registry.labs.nic.cz/turris/foris-ci/python3 .
-docker push registry.labs.nic.cz/turris/foris-ci/python3
+docker build -t registry.nic.cz/turris/foris-ci/python3 .
+docker push registry.nic.cz/turris/foris-ci/python3
