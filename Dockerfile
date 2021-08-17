@@ -19,6 +19,9 @@ RUN \
     python3-prctl python3-dev python3-setuptools python3-jsonschema \
     python3-pip python3-pbkdf2 locales gpg gpg-agent libcap-dev \
     mosquitto wireguard-tools \
+    curl wget build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+    libsqlite3-dev llvm libncurses5-dev libncursesw5-dev  \
+    xz-utils tk-dev libffi-dev liblzma-dev \
     && \
   apt-get clean
 
@@ -84,11 +87,11 @@ RUN \
 RUN \
   mkdir -p ~/build && \
   cd ~/build && \
-  rm -rf rpcd && \
+  rm -rf iwinfo && \
   git clone git://git.openwrt.org/project/iwinfo.git && \
   cd iwinfo && \
   ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so liblua.so && \
-  CFLAGS="-I/usr/include/lua5.1/" LD=ld FPIC="-fPIC" LDFLAGS="-lc" make && \
+  CFLAGS="-I/usr/include/lua5.1/" LD=ld FPIC="-fPIC" LDFLAGS="-lc -shared" make && \
   cp -r include/* /usr/local/include/ && \
   cp libiwinfo.so /usr/local/lib/
 
@@ -106,5 +109,19 @@ RUN \
 RUN \
   mkdir /root/.ssh && \
   ssh-keyscan gitlab.nic.cz > /root/.ssh/known_hosts
+
+# Install pyenv
+ENV PYENV_ROOT="/root/.pyenv"
+ENV PATH "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+
+RUN \
+  curl https://pyenv.run | bash
+
+# Install pythons
+RUN pyenv install 3.6.14
+RUN pyenv install 3.7.11
+RUN pyenv install 3.8.11
+RUN pyenv install 3.9.6 
+RUN pyenv local system 3.6.14 3.7.11 3.8.11 3.9.6
 
 CMD [ "bash" ]
