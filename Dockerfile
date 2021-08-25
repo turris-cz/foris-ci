@@ -6,10 +6,9 @@ ENV LC_ALL=en_US.utf8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install base packages
-# TODO once bullseye becomes stable remove the backports
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/backports.list && \
+  sed -i 's#debian-security stable/updates#debian-security stable-security/updates#g' /etc/apt/sources.list && \
   echo "# Installing base packages" && \
   apt-get update && \
   apt-get -y upgrade && \
