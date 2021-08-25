@@ -15,6 +15,15 @@ build_image_python3:
     - docker:dind
   script:
     - docker build -t registry.nic.cz/turris/foris-ci/python3 .
+  tags:
+    - dind
+
+push_image_python3:
+  image: docker:git
+  stage: python3
+  services:
+    - docker:dind
+  script:
     - docker push registry.nic.cz/turris/foris-ci/python3
   tags:
     - dind
