@@ -6,11 +6,12 @@ before_script:
  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.nic.cz
 
 stages:
-  - python3
+  - build
+  - push
 
 build_image_python3:
   image: docker:git
-  stage: python3
+  stage: build
   services:
     - docker:dind
   script:
@@ -20,7 +21,7 @@ build_image_python3:
 
 push_image_python3:
   image: docker:git
-  stage: python3
+  stage: push
   services:
     - docker:dind
   script:
