@@ -1,0 +1,1 @@
+reforis @ git+https://gitlab.nic.cz/turris/reforis/reforis@uninitialized-guide-data#egg=reforis

@@ -1,0 +1,1 @@
+foris-ws @ git+https://gitlab.nic.cz/turris/foris-controller/foris-ws.git
