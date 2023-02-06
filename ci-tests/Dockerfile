@@ -9,9 +9,9 @@ RUN \
 
 # Install pythons
 RUN pyenv install 3.6.14
-RUN pyenv install 3.7.11
-RUN pyenv install 3.8.11
-RUN pyenv install 3.9.6 
-RUN pyenv local system 3.6.14 3.7.11 3.8.11 3.9.6
+RUN pyenv install 3.7.16
+RUN pyenv install 3.8.16
+RUN pyenv install 3.9.16 
+RUN pyenv local system 3.6.14 3.7.16 3.8.16 3.9.16
 
 CMD [ "bash" ]
