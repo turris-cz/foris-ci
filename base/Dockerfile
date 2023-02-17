@@ -101,8 +101,8 @@ RUN \
   rm -rf rpcd && \
   git clone git://git.openwrt.org/project/rpcd.git && \
   cd rpcd && \
-  git checkout d11ffe9383ae0ec34836421926364b24c1d891ca && \
-  cmake CMakeLists.txt && \
+  git checkout master && \
+  cmake CMakeLists.txt -DUCODE_SUPPORT=NO && \
   make install
 
 # Add Gitlab's SSH key
