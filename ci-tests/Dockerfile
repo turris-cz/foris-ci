@@ -8,12 +8,9 @@ RUN \
   curl https://pyenv.run | bash
 
 # Install pythons
-RUN pyenv install 3.6.14
-RUN pyenv install 3.7.16
-RUN pyenv install 3.8.16
 RUN pyenv install 3.9.16 
 RUN pyenv install 3.10.11
 RUN pyenv install 3.11.3
-RUN pyenv local system 3.6.14 3.7.16 3.8.16 3.9.16 3.10.11 3.11.3
+RUN pyenv local system 3.9.16 3.10.11 3.11.3
 
 CMD [ "bash" ]
