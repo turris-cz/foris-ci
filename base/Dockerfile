@@ -91,8 +91,8 @@ RUN \
   cd iwinfo && \
   ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so liblua.so && \
   CFLAGS="-I/usr/include/lua5.1/" LD=ld FPIC="-fPIC" LDFLAGS="-lc -shared" make && \
-  cp -r include/* /usr/local/include/ && \
-  cp libiwinfo.so /usr/local/lib/
+  cp -r include/* /usr/include/ && \
+  cp libiwinfo.so /usr/lib/
 
 # Compile rpcd
 RUN \
