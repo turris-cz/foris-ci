@@ -80,7 +80,7 @@ RUN \
   rm -rf python-ubus && \
   git clone https://gitlab.nic.cz/turris/python-ubus.git && \
   cd ~/build/python-ubus && \
-  pip install .
+  pip install --break-system-packages .
 
 # Compile iwinfo
 RUN \

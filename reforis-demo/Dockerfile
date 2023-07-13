@@ -19,8 +19,8 @@ RUN mkdir /plugins/
 COPY --from=node /plugins/*.whl /plugins/
 
 RUN pip -v install -r /requirements-foris-ws.txt
-RUN pip install /plugins/*.whl
-RUN pip install /reforis*.whl
+RUN pip install --break-system-packages /plugins/*.whl
+RUN pip install --break-system-packages /reforis*.whl
 
 RUN apt-get update && apt-get install -y nginx
 
