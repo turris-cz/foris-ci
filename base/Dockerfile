@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:bookworm
 
 ENV HOME=/root
 ENV TZ=Europe/Prague
@@ -7,8 +7,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install base packages
 RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  sed -i 's#debian-security stable/updates#debian-security stable-security/updates#g' /etc/apt/sources.list && \
   echo "# Installing base packages" && \
   apt-get update && \
   apt-get -y upgrade && \
@@ -75,12 +73,7 @@ RUN \
 
 # Install ubus python bindings
 RUN \
-  mkdir -p ~/build && \
-  cd ~/build && \
-  rm -rf python-ubus && \
-  git clone https://gitlab.nic.cz/turris/python-ubus.git && \
-  cd ~/build/python-ubus && \
-  pip install .
+  pip install --break-system-packages ubus
 
 # Compile iwinfo
 RUN \
