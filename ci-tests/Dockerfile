@@ -12,10 +12,10 @@ RUN pyenv install 3.9.16
 RUN pyenv install 3.10.11
 RUN pyenv install 3.11.3
 
-# Install ubus to all pythons (cant be compiled within tox)
-RUN pyenv local 3.9.16 && pip install ubus
-RUN pyenv local 3.10.11 && pip install ubus
-RUN pyenv local 3.11.3 && pip install ubus
+# Install ubus and pyuci to all pythons (cant be compiled within tox)
+RUN pyenv local 3.9.16 && pip install ubus pyuci
+RUN pyenv local 3.10.11 && pip install ubus pyuci
+RUN pyenv local 3.11.3 && pip install ubus pyuci
 
 # Set root python config
 RUN pyenv local system 3.9.16 3.10.11 3.11.3
