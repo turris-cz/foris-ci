@@ -4,6 +4,7 @@ ENV HOME=/root
 ENV TZ=Europe/Prague
 ENV LC_ALL=en_US.utf8
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Install base packages
 RUN \
