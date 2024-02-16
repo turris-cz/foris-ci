@@ -9,6 +9,7 @@ docker build -t registry.nic.cz/turris/foris-ci/python3 -t registry.nic.cz/turri
 docker build -t registry.nic.cz/turris/foris-ci/supervised -f supervised/Dockerfile supervised
 docker build -t registry.nic.cz/turris/foris-ci/foris-controller-mock -f foris-controller-mock/Dockerfile foris-controller-mock
 docker build -t registry.nic.cz/turris/foris-ci/reforis-demo -f reforis-demo/Dockerfile reforis-demo
+docker build -t registry.nic.cz/turris/foris-ci/reforis-ci -f reforis-ci/Dockerfile reforis-ci
 
 # Push it to the registry
 docker push registry.nic.cz/turris/foris-ci/base
@@ -17,3 +18,4 @@ docker push registry.nic.cz/turris/foris-ci/ci-tests
 docker push registry.nic.cz/turris/foris-ci/supervised
 docker push registry.nic.cz/turris/foris-ci/foris-controller-mock
 docker push registry.nic.cz/turris/foris-ci/reforis-demo
+docker push registry.nic.cz/turris/foris-ci/reforis-ci

@@ -11,6 +11,7 @@ stages:
   - ci-tests
   - foris-controller-mock
   - reforis-demo
+  - reforis-ci
 
 image::base:
   image: docker:git
@@ -82,6 +83,20 @@ image::reforis-demo:
     - docker pull registry.nic.cz/turris/foris-ci/foris-controller-mock
     - docker build -t registry.nic.cz/turris/foris-ci/reforis-demo -f reforis-demo/Dockerfile reforis-demo
     - docker push registry.nic.cz/turris/foris-ci/reforis-demo
+  tags:
+    - dind
+  only:
+    - master
+
+image::reforis-ci:
+  image: docker:git
+  stage: reforis-ci
+  needs: []
+  services:
+    - docker:dind
+  script:
+    - docker build -t registry.nic.cz/turris/foris-ci/reforis-ci -f reforis-ci/Dockerfile reforis-ci
+    - docker push registry.nic.cz/turris/foris-ci/reforis-ci
   tags:
     - dind
   only:
