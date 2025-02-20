@@ -3,7 +3,7 @@ variables:
 
 before_script:
  - docker info
- - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.nic.cz
+ - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
 
 stages:
   - base
