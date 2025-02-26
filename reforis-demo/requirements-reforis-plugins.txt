@@ -1,1 +1,1 @@
-reforis_openvpn @ git+https://gitlab.nic.cz/turris/reforis/reforis-openvpn.git
+reforis_openvpn

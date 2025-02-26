@@ -1,5 +1,7 @@
 FROM node:16-bullseye AS node
 
+ENV PIP_EXTRA_INDEX_URL="https://gitlab.nic.cz/api/v4/projects/1066/packages/pypi/simple"
+
 RUN apt-get update && apt-get install -y python3-pip python3-wheel git webpack
 
 COPY requirements-reforis.txt /requirements-reforis.txt
@@ -13,6 +15,7 @@ RUN \
 
 FROM registry.nic.cz/turris/foris-ci/foris-controller-mock:latest
 
+ENV PIP_EXTRA_INDEX_URL="https://gitlab.nic.cz/api/v4/projects/1066/packages/pypi/simple"
 COPY requirements-foris-ws.txt /requirements-foris-ws.txt
 COPY --from=node /reforis*.whl /
 RUN mkdir /plugins/
