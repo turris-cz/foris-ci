@@ -2,7 +2,7 @@ FROM registry.nic.cz/turris/foris-ci/base:latest
 
 # Install pyenv
 ENV PYENV_ROOT="/root/.pyenv"
-ENV PATH "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+ENV PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 RUN \
   curl https://pyenv.run | bash
