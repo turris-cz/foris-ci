@@ -1,4 +1,4 @@
 paho-mqtt
-foris-controller @ git+https://gitlab.nic.cz/turris/foris-controller/foris-controller.git
-foris-controller-openvpn-module @ git+https://gitlab.nic.cz/turris/foris-controller/foris-controller-openvpn-module.git
-foris-controller-openvpn_client-module @ git+https://gitlab.nic.cz/turris/foris-controller/foris-controller-openvpn_client-module.git
+foris-controller
+foris-controller-openvpn-module
+foris-controller-openvpn_client-module
