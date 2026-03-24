@@ -1,10 +1,10 @@
 # Use the official Python image as the base image
 FROM python:3.11
 
-# Install Node.js 22.x
-ENV NODE_VERSION=22.14.0
+# Install Node.js 24.x using nvm
+ENV NODE_VERSION=24.14.0
 RUN apt install -y curl
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 ENV NVM_DIR=/root/.nvm
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
