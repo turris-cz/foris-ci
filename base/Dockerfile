@@ -44,7 +44,7 @@ RUN \
   mkdir -p ~/build && \
   cd ~/build && \
   rm -rf libubox && \
-  git clone git://git.openwrt.org/project/libubox.git && \
+  git clone https://github.com/openwrt/libubox.git && \
   cd ~/build/libubox && \
   git checkout master && \
   cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
@@ -55,7 +55,7 @@ RUN \
   mkdir -p ~/build && \
   cd ~/build && \
   rm -rf uci && \
-  git clone git://git.openwrt.org/project/uci.git && \
+  git clone https://github.com/openwrt/uci.git && \
   cd ~/build/uci && \
   git checkout master && \
   cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
@@ -81,7 +81,7 @@ RUN \
   mkdir -p ~/build && \
   cd ~/build && \
   rm -rf iwinfo && \
-  git clone git://git.openwrt.org/project/iwinfo.git && \
+  git clone https://github.com/openwrt/iwinfo.git && \
   cd iwinfo && \
   ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so liblua.so && \
   CFLAGS="-I/usr/include/lua5.1/" LD=ld FPIC="-fPIC" LDFLAGS="-lc -shared" make && \
@@ -93,7 +93,7 @@ RUN \
   mkdir -p ~/build && \
   cd ~/build && \
   rm -rf rpcd && \
-  git clone git://git.openwrt.org/project/rpcd.git && \
+  git clone https://github.com/openwrt/rpcd.git && \
   cd rpcd && \
   git checkout master && \
   cmake CMakeLists.txt -DUCODE_SUPPORT=NO && \
