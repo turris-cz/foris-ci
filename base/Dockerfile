@@ -104,4 +104,10 @@ RUN \
   mkdir /root/.ssh && \
   ssh-keyscan gitlab.nic.cz > /root/.ssh/known_hosts
 
+# Disable IPv6
+RUN \
+  echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf && \
+  echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf && \
+  echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+
 CMD [ "bash" ]
